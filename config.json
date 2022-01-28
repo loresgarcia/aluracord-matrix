@@ -15,22 +15,28 @@
           "900": "#E0B47B"
         },
         "neutrals": {
-          "000": "#891A29",
-          "050": "#EB98A3",
+          "000": "#FFFFFF",
+          "050": "#FFFFFF",
           "100": "#FFFFFF",
-          "200": "#FFFFFF",
-          "300": "#FFFFFF",
-          "400": "#FFFFFF",
-          "500": "#EB98A3",
-          "600": "#DB4357",
-          "700": "#DA4458",
-          "800": "#E47785",
-          "900": "#DA3E52",
-          "999": "#E47785"
+          "200": "#04100A",
+          "300": "#04100A",
+          "500": "#39D085",
+          "600": "#39D085",
+          "700": "#7BE0AD",
+          "800": "#AEE5D8",
+          "900": "#7BE0AD",
+          "999": "#FFFFFF"
         }
       }
     },
     "stickers": [
+      "https://media4.giphy.com/media/oy5ZjbSP1gKXE3Zkxk/giphy.gif?cid=790b761188195cdf720493636e7e484ac09d5a0b47a9f2cc&rid=giphy.gif&ct=g",
+      "https://media0.giphy.com/media/fAJ2o8gZB4fA924mQq/200w.webp?cid=ecf05e47edd75lpnv80rk2tgpfejtn8oubko01pc01k2qzi1&rid=200w.webp&ct=g",
+      "https://media1.giphy.com/media/3ofT5VgD5NOgKbYlna/giphy.gif?cid=790b76116d8d384632c830ec651d16beef5a4a8d212b7e14&rid=giphy.gif&ct=g",
+      "https://media0.giphy.com/media/TDfe1tR9j041Lfn7BU/giphy.gif?cid=790b7611a172099f07b8361970dd0eac075be770e86c033b&rid=giphy.gif&ct=g",
+      "http://78.media.tumblr.com/11a2129d4256ff6c7fd5e395c8026f73/tumblr_p25wirKY5p1wxr126o1_500.gif",
+      "https://s12.favim.com/gif_previews/7/718/7183/71834/7183430.gif",
+      "https://i.pinimg.com/originals/e1/56/13/e15613961b20197c3863e766148da163.gif",
       "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_1.png",
       "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_2.png",
       "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_3.png",
