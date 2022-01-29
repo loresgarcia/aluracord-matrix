@@ -48,7 +48,7 @@ export default function PaginaInicial() {
                         borderRadius: '5px', padding: '32px', margin: '16px',
                         boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
                         backgroundColor: appConfig.theme.colors.neutrals[700],
-                        opacity: '90%',
+                        opacity: '95%',
                     }}
                 >
                     {/* Formulário */}
@@ -95,7 +95,7 @@ export default function PaginaInicial() {
                             fullWidth
                             textFieldColors={{
                                 neutral: {
-                                    textColor: appConfig.theme.colors.neutrals[200],
+                                    textColor: appConfig.theme.colors.neutrals[100],
                                     mainColor: appConfig.theme.colors.neutrals[900],
                                     mainColorHighlight: appConfig.theme.colors.primary[500],
                                     backgroundColor: appConfig.theme.colors.neutrals[800],
@@ -108,9 +108,9 @@ export default function PaginaInicial() {
                             fullWidth
                             buttonColors={{
                                 contrastColor: appConfig.theme.colors.neutrals["000"],
-                                mainColor: appConfig.theme.colors.primary[500],
-                                mainColorLight: appConfig.theme.colors.primary[400],
-                                mainColorStrong: appConfig.theme.colors.primary[600],
+                                mainColor: appConfig.theme.colors.neutrals[800],
+                                mainColorLight: appConfig.theme.colors.neutrals[400],
+                                mainColorStrong: appConfig.theme.colors.neutrals[600],
                             }}
                         />
                     </Box>
@@ -127,7 +127,7 @@ export default function PaginaInicial() {
                             padding: '16px',
                             backgroundColor: appConfig.theme.colors.neutrals[800],
                             border: '1px solid',
-                            borderColor: appConfig.theme.colors.neutrals[999],
+                            borderColor: appConfig.theme.colors.neutrals[700],
                             borderRadius: '10px',
                             flex: 1,
                             minHeight: '240px',

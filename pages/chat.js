@@ -120,7 +120,7 @@ export default function ChatPage() {
                         padding: '16px',
                     }}
                 >
-                    <MessageList mensagens={listaDeMensagens} />
+                    <MessageList mensagens={listaDeMensagens} setMensagens={setListaDeMensagens} />
                     {/* {listaDeMensagens.map((mensagemAtual) => {
                     return (
                         <li key={mensagemAtual.id}>
@@ -155,12 +155,26 @@ export default function ChatPage() {
                                 resize: 'none',
                                 borderRadius: '5px',
                                 padding: '6px 8px',
-                                backgroundColor: appConfig.theme.colors.neutrals[800],
+                                backgroundColor: appConfig.theme.colors.neutrals['000'],
                                 marginRight: '12px',
-                                color: appConfig.theme.colors.neutrals[200],
+                                color: appConfig.theme.colors.neutrals[999],
                             }}
                         />
                         {/* CallBack */}
+                        <Button 
+                            label='Enviar' 
+                            styleSheet={{
+                                marginRight: '10px',
+                                marginBottom: '10px',
+                                backgroundColor: appConfig.theme.colors.neutrals[700],
+                                hover: {
+                                    backgroundColor: appConfig.theme.colors.neutrals[300]
+                        }
+                            }}
+                            onClick={(e) => {
+                            e.preventDefault();
+                            handleNovaMensagem(mensagem);
+                        }} />
                         <ButtonSendSticker
                             onStickerClick={(sticker) => {
                                 // console.log('[USANDO O COMPONENTE] Salva esse sticker no banco', sticker);
@@ -182,8 +196,13 @@ function Header() {
                     Chat
                 </Text>
                 <Button
-                    variant='tertiary'
-                    colorVariant='neutral'
+                    styleSheet={{
+                        backgroundColor: appConfig.theme.colors.neutrals[600],
+                        hover: {
+                            backgroundColor: appConfig.theme.colors.neutrals[300]
+                        }
+
+                    }}
                     label='Logout'
                     href="/"
                 />
@@ -193,12 +212,19 @@ function Header() {
 }
 
 function MessageList(props) {
+
+    function DeletarMensagem(mensagem) {
+        const novaListaDeMensagens = props.mensagens.filter((mensagemRemover) => {
+            return mensagem.id !== mensagemRemover.id
+        })
+        props.setMensagens(novaListaDeMensagens);
+    }
     // console.log(props);
     return (
         <Box
             tag="ul"
             styleSheet={{
-                overflow: 'scroll',
+                overflow: 'auto',
                 display: 'flex',
                 flexDirection: 'column-reverse',
                 flex: 1,
@@ -227,8 +253,8 @@ function MessageList(props) {
                         >
                             <Image
                                 styleSheet={{
-                                    width: '20px',
-                                    height: '20px',
+                                    width: '40px',
+                                    height: '40px',
                                     borderRadius: '50%',
                                     display: 'inline-block',
                                     marginRight: '8px',
@@ -242,12 +268,27 @@ function MessageList(props) {
                                 styleSheet={{
                                     fontSize: '10px',
                                     marginLeft: '8px',
+                                    display: 'inline',
                                     color: appConfig.theme.colors.neutrals[300],
                                 }}
                                 tag="span"
                             >
                                 {(new Date().toLocaleDateString())}
                             </Text>
+                            <Image 
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    DeletarMensagem(mensagem)
+                                }}
+                                styleSheet={{
+                                    width: '24px',
+                                    display: 'inline',
+                                    marginLeft: '90%',
+                                    hover: {
+                                        cursor: 'pointer',
+                                    }
+                                }}
+                                src='https://i.imgur.com/sim3IY0.png' />
                         </Box>
                         {/* [Declarativo] */}
                         {/* Condicional: {mensagem.texto.startsWith(':sticker:').toString()} */}
@@ -255,7 +296,7 @@ function MessageList(props) {
                             ? (
                                 <Image 
                                     styleSheet={{
-                                        maxWidth: '100px',
+                                        maxWidth: '100px'
                                     }}
                                     src={mensagem.texto.replace(':sticker:', '')} />
                             )

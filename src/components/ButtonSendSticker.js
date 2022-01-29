@@ -23,13 +23,15 @@ export function ButtonSendSticker(props) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: appConfig.theme.colors.neutrals[300],
-          filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
+          backgroundColor: appConfig.theme.colors.neutrals[600],
+          filter: isOpen ? 'grayscale(0)' : 'grayscale(0)',
           hover: {
             filter: 'grayscale(0)',
+            backgroundColor: appConfig.theme.colors.neutrals[700],
+
           }
         }}
-        label="😋"
+        label="😊"
         onClick={() => setOpenState(!isOpen)}
       />
       {isOpen && (
