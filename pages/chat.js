@@ -4,6 +4,7 @@ import appConfig from '../config.json';
 import { useRouter } from 'next/router';
 import { createClient } from '@supabase/supabase-js'
 import { ButtonSendSticker } from '../src/components/ButtonSendSticker';
+import { ProfileHover } from '../src/components/ProfileHover';
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzMxMDk4NSwiZXhwIjoxOTU4ODg2OTg1fQ.pNsFtH-lB21nuGjPSf365XEDq3x1C3E7nWQapkbWdfo';
 const SUPABASE_URL = 'https://hscmgaxfvofclsvhsfwk.supabase.co';
@@ -161,20 +162,20 @@ export default function ChatPage() {
                             }}
                         />
                         {/* CallBack */}
-                        <Button 
-                            label='Enviar' 
+                        <Button
+                            label='Enviar'
                             styleSheet={{
                                 marginRight: '10px',
                                 marginBottom: '10px',
                                 backgroundColor: appConfig.theme.colors.neutrals[700],
                                 hover: {
                                     backgroundColor: appConfig.theme.colors.neutrals[300]
-                        }
+                                }
                             }}
                             onClick={(e) => {
-                            e.preventDefault();
-                            handleNovaMensagem(mensagem);
-                        }} />
+                                e.preventDefault();
+                                handleNovaMensagem(mensagem);
+                            }} />
                         <ButtonSendSticker
                             onStickerClick={(sticker) => {
                                 // console.log('[USANDO O COMPONENTE] Salva esse sticker no banco', sticker);
@@ -193,7 +194,7 @@ function Header() {
         <>
             <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
                 <Text variant='heading5'>
-                    Chat
+                    Qual sua música favorita do Twice? 🎧
                 </Text>
                 <Button
                     styleSheet={{
@@ -212,6 +213,8 @@ function Header() {
 }
 
 function MessageList(props) {
+    const [isOpen, setOpenState] = React.useState('');
+    const [id, setId] = React.useState('');
 
     function DeletarMensagem(mensagem) {
         const novaListaDeMensagens = props.mensagens.filter((mensagemRemover) => {
@@ -260,6 +263,16 @@ function MessageList(props) {
                                     marginRight: '8px',
                                 }}
                                 src={`https://github.com/${mensagem.de}.png`}
+                                onMouseOver={(e) => {
+                                    setId(mensagem.id);
+                                    setOpenState(true);
+                                }}
+                            />
+                            <ProfileHover
+                                mensagem={mensagem}
+                                open={isOpen}
+                                setOpen={() => setOpenState(!isOpen)}
+                                id={id}
                             />
                             <Text tag="strong">
                                 {mensagem.de}
@@ -275,7 +288,7 @@ function MessageList(props) {
                             >
                                 {(new Date().toLocaleDateString())}
                             </Text>
-                            <Image 
+                            <Image
                                 onClick={(e) => {
                                     e.preventDefault();
                                     DeletarMensagem(mensagem)
@@ -294,7 +307,7 @@ function MessageList(props) {
                         {/* Condicional: {mensagem.texto.startsWith(':sticker:').toString()} */}
                         {mensagem.texto.startsWith(':sticker:')
                             ? (
-                                <Image 
+                                <Image
                                     styleSheet={{
                                         maxWidth: '100px'
                                     }}
