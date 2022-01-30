@@ -21,7 +21,7 @@ function Titulo(props) {
 
 export default function PaginaInicial() {
     // const username = 'loresgarcia';
-    const [username, setUsername] = React.useState('loresgarcia');
+    const [username, setUsername] = React.useState('');
     const roteamento = useRouter();
 
     return (
@@ -54,7 +54,9 @@ export default function PaginaInicial() {
                     {/* Formulário */}
                     <Box
                         as="form"
-                        onSubmit={function (infosDoEvento) {
+                        onSubmit={username.length < 1 ? (e) => {
+                            roteamento.push(`/`)
+                        } : function (infosDoEvento) {
                             infosDoEvento.preventDefault();
                             console.log('Alguém submeteu o form');
                             roteamento.push(`/chat?username=${username}`);
@@ -135,10 +137,10 @@ export default function PaginaInicial() {
                     >
                         <Image
                             styleSheet={{
-                                borderRadius: '50%',
+                                borderRadius: '10px',
                                 marginBottom: '16px',
                             }}
-                            src={`https://github.com/${username}.png`}
+                            src={username.length >= 1 ? `https://github.com/${username}.png` : `https://toppng.com/public/uploads/thumbnail/twice-logo-en-11562926826yac3w6owuv.png`}
                         />
                         <Text
                             variant="body4"
@@ -146,7 +148,10 @@ export default function PaginaInicial() {
                                 color: appConfig.theme.colors.neutrals[200],
                                 backgroundColor: appConfig.theme.colors.neutrals[900],
                                 padding: '3px 10px',
-                                borderRadius: '1000px'
+                                borderRadius: '10px',
+                                textAlign: 'center',
+                                minHeight: '20px',
+                                minWidth: '100px'
                             }}
                         >
                             {username}

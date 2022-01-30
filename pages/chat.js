@@ -74,11 +74,7 @@ export default function ChatPage() {
                 mensagem
             ])
             .then(({ data }) => {
-                console.log('Criando mensagem: ', data);
-                setListaDeMensagens([
-                    data[0],
-                    ...listaDeMensagens,
-                ]);
+
             });
 
         setMensagem('');
@@ -136,6 +132,23 @@ export default function ChatPage() {
                             alignItems: 'center',
                         }}
                     >
+                        <a href={`https://github.com/${usuarioLogado}`}>
+                            <Image 
+                                styleSheet={{
+                                    height: '50px',
+                                    width: '50px',
+                                    borderRadius: '50%',
+                                    marginRight: '15px',
+                                    position: 'relative',
+                                    top: '-5px',
+                                    transition: '1s',
+                                    hover: {
+                                        transform: 'rotate(360deg)'
+                                    }
+                                }}
+                                src={`https://github.com/${usuarioLogado}.png`}
+                            />
+                        </a>
                         <TextField
                             value={mensagem}
                             onChange={(event) => {
