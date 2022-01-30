@@ -299,7 +299,7 @@ function MessageList(props) {
                                 }}
                                 tag="span"
                             >
-                                {(new Date().toLocaleDateString())}
+                                {(new Date(mensagem.created_at).toLocaleDateString())}
                             </Text>
                             <Image
                                 onClick={(e) => {
